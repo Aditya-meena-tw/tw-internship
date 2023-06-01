@@ -1,0 +1,12 @@
+2023-06-01 07:24:40,190 - internship_product.wsgi - DEBUG - This is a debug message
+2023-06-01 07:24:40,190 - internship_product.wsgi - INFO - This is an info message
+2023-06-01 07:24:40,190 - internship_product.wsgi - WARNING - This is a warning message
+2023-06-01 07:24:40,191 - internship_product.wsgi - ERROR - This is an error message
+2023-06-01 07:42:03,428 - internship_product.wsgi - DEBUG - This is a debug message
+2023-06-01 07:42:03,429 - internship_product.wsgi - INFO - This is an info message
+2023-06-01 07:42:03,429 - internship_product.wsgi - WARNING - This is a warning message
+2023-06-01 07:42:03,429 - internship_product.wsgi - ERROR - This is an error message
+2023-06-01 07:46:32,955 - internship_product.wsgi - DEBUG - This is a debug message
+2023-06-01 07:46:32,956 - internship_product.wsgi - INFO - This is an info message
+2023-06-01 07:46:32,956 - internship_product.wsgi - WARNING - This is a warning message
+2023-06-01 07:46:32,956 - internship_product.wsgi - ERROR - This is an error message
