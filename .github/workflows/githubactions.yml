@@ -43,6 +43,9 @@ jobs:
           sudo apt-get install -y apache2
           # Configure Apache as per your project requirements
 
+      - name: Create project directory
+        run: sudo mkdir -p /home/aditya/internship-pipeline/internship_product
+
       - name: Copy project files to Apache document root
         run: |
           sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
