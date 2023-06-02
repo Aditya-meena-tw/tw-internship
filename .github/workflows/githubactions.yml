@@ -43,12 +43,12 @@ jobs:
           sudo apt-get install -y apache2
           # Configure Apache as per your project requirements
 
-      # - name: Create project directory
-      #   run: sudo mkdir -p /home/aditya/internship-pipeline/internship_product
+      - name: Create project directory
+        run: sudo mkdir -p internship_product
 
-      # - name: Copy project files to Apache document root
-      #   run: |
-      #     sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
+      - name: Copy project files to Apache document root
+        run: |
+          sudo cp -r * /internship_product  # Replace with the appropriate path to your project files
           
       - name: Restart Apache
         run: sudo systemctl restart apache2
@@ -57,7 +57,8 @@ jobs:
       - name: Configure Apache Server
         run: |
             sudo rm /etc/apache2/sites-available/000-default.conf
-            sudo cp /apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+            sudo cp /internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+            sudo cat  /etc/apache2/sites-available/thoughtwin-internship-pro.conf 
             sudo a2ensite thoughtwin-internship-pro.conf
             sudo service apache2 reload
 
