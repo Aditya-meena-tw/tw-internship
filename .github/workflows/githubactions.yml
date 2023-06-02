@@ -42,6 +42,9 @@ jobs:
           sudo apt-get install -y apache2
           sudo service apache2 start
 
+      - name: List contents of internship_product directory
+        run: ls -R internship_product
+        
       - name: Configure Apache Server
         run: |
           
