@@ -49,6 +49,10 @@ jobs:
       - name: Copy project files to Apache document root
         run: |
           sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
+          
+      - name: Restart Apache
+        run: sudo systemctl restart apache2
+
 
       - name: Configure Apache Server
         run: |
@@ -57,6 +61,4 @@ jobs:
             sudo a2ensite thoughtwin-internship-pro.conf
             sudo systemctl reload apache2   
 
-      - name: Restart Apache
-        run: sudo systemctl restart apache2
 
