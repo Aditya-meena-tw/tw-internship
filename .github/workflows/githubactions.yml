@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python manage.py collectstatic
+    
 
       # - name: Log in to Docker Hub
       #   uses: docker/login-action@v1
@@ -37,6 +37,9 @@ jobs:
 
       - name: Testing
         run: python manage.py test
+      
+      - name: Collecting StaticFiles
+        run: python manage.py collectstatic --no--input
 
       - name: Set up Apache
         run: |
