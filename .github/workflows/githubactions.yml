@@ -37,19 +37,16 @@ jobs:
       - name: Testing
         run: python manage.py test
 
-      - name: Set up Apache
+      - name: Start Apache Server
         run: |
-          sudo apt-get update
           sudo apt-get install -y apache2
-          # Configure Apache as per your project requirements
+          sudo service apache2 start
 
-      - name: Create project directory
-        run: sudo mkdir -p /home/aditya/internship-pipeline/internship_product
-
-      - name: Copy project files to Apache document root
+      - name: Configure Apache Server
         run: |
-          sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
+          
+          sudo cp internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+          sudo a2ensite thoughtwin-internship-pro.conf
+          sudo service apache2 reload
 
-      - name: Restart Apache
-        run: sudo systemctl restart apache2
 
