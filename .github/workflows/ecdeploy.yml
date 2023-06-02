@@ -26,21 +26,3 @@ jobs:
           host: 3.93.153.178
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Update package information and resolve held packages
-        run: |
-          sudo apt update
-          sudo apt-get install -f
-
-      - name: Remove conflicting packages
-        run: |
-          sudo apt-get remove moby-containerd containerd moby-runc runc
-
-      - name: Install Docker
-        run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
-
-      - name: Build and Deploy Dockerized Application
-        run: |
-          docker-compose up -d
