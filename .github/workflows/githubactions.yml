@@ -55,7 +55,7 @@ jobs:
             sudo rm /etc/apache2/sites-available/000-default.conf
             sudo cp /home/aditya/internship-pipeline/internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
             sudo a2ensite thoughtwin-internship-pro.conf
-            sudo systemctl reload apache2
+            sudo systemctl reload apache2 
 
       - name: Restart Apache
         run: sudo systemctl restart apache2
