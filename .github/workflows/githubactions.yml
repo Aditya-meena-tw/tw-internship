@@ -45,7 +45,7 @@ jobs:
       - name: Configure Apache Server
         run: |
           
-          sudo cp internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+          sudo cp /home/aditya/internship-pipeline/internship_product/apache /etc/apache2/sites-available/
           sudo a2ensite thoughtwin-internship-pro.conf
           sudo service apache2 reload
 
