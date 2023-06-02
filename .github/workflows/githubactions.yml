@@ -50,8 +50,8 @@ jobs:
         run: |
           sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
 
-          - name: Configure Apache Server
-          run: |
+      - name: Configure Apache Server
+        run: |
             sudo rm /etc/apache2/sites-available/000-default.conf
             sudo cp internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
             sudo a2ensite thoughtwin-internship-pro.conf
