@@ -39,7 +39,7 @@ jobs:
         run: python manage.py test
       
       - name: Collecting StaticFiles
-        run: python manage.py collectstatic --no--input
+        run: python manage.py collectstatic --noinput
 
       - name: Set up Apache
         run: |
