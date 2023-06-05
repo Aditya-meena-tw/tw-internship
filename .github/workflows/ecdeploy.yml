@@ -17,12 +17,12 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}   
           aws-region: us-east-1
 
       - name: Connect to EC2 instance
         uses: appleboy/ssh-action@master
         with: 
-          host: 3.93.153.178
+          host: 3.85.107.153
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }} 
