@@ -25,4 +25,4 @@ jobs:
         with: 
           host: 3.93.153.178
           username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }} 
