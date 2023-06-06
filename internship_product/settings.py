@@ -122,11 +122,11 @@ WSGI_APPLICATION = 'internship_product.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": env("DATABASE_NAME"),
         "USER": env("DATABASE_USER"),
         "PASSWORD": env("DATABASE_PASSWORD"),
-        "HOST": ("db"),
+        'HOST': 'localhost',
         "PORT": env("DATABASE_PORT"),
     }
 }
