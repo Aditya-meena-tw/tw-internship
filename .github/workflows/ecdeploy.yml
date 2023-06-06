@@ -23,6 +23,6 @@ jobs:
       - name: Connect to EC2 instance
         uses: appleboy/ssh-action@master
         with: 
-          host: 3.85.107.153
+          host: 54.92.198.34
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}  
