@@ -1,72 +1,72 @@
-name: Internship Pro
+# name: Internship Pro
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Setup Repo Source Code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Setup Repo Source Code
+#         uses: actions/checkout@v3
 
-      - name: Setup Python Version
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+#       - name: Setup Python Version
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.8
 
-      - name: Installing Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+#       - name: Installing Dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
     
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Docker-compoe
-        run: |
-             docker-compose build  
+#       - name: Docker-compoe
+#         run: |
+#              docker-compose build  
 
-      - name: Push Docker image
-        run: |
-           docker push adityameena/internship_product_web:latest   
+#       - name: Push Docker image
+#         run: |
+#            docker push adityameena/internship_product_web:latest   
 
-      - name: Testing
-        run: python manage.py test
+#       - name: Testing
+#         run: python manage.py test
       
-      - name: Collecting StaticFiles
-        run: python manage.py collectstatic --noinput
+#       - name: Collecting StaticFiles
+#         run: python manage.py collectstatic --noinput
 
-      - name: Set up Apache
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y apache2
-          # Configure Apache as per your project requirements
+#       - name: Set up Apache
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y apache2
+#           # Configure Apache as per your project requirements
 
-      - name: Create project directory
-        run: sudo mkdir -p /home/aditya/internship-pipeline/internship_product
+#       - name: Create project directory
+#         run: sudo mkdir -p /home/aditya/internship-pipeline/internship_product
 
-      - name: Copy project files to Apache document root
-        run: |
-          sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
+#       - name: Copy project files to Apache document root
+#         run: |
+#           sudo cp -r * /home/aditya/internship-pipeline/internship_product  # Replace with the appropriate path to your project files
           
-      - name: Restart Apache
-        run: sudo systemctl restart apache2
+#       - name: Restart Apache
+#         run: sudo systemctl restart apache2
 
 
-      - name: Configure Apache Server
-        run: |
-            sudo rm /etc/apache2/sites-available/000-default.conf
-            sudo cp /home/aditya/internship-pipeline/internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
-            sudo cat /etc/apache2/sites-available/thoughtwin-internship-pro.conf 
-            sudo service apache2 reload 
-            sudo a2ensite thoughtwin-internship-pro.conf
+#       - name: Configure Apache Server
+#         run: |
+#             sudo rm /etc/apache2/sites-available/000-default.conf
+#             sudo cp /home/aditya/internship-pipeline/internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+#             sudo cat /etc/apache2/sites-available/thoughtwin-internship-pro.conf 
+#             sudo service apache2 reload 
+#             sudo a2ensite thoughtwin-internship-pro.conf
 
 
