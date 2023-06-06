@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -17,12 +17,35 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}   
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Connect to EC2 instance
         uses: appleboy/ssh-action@master
-        with: 
+        with:
           host: 54.92.198.34
           username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY }}  
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+         
+
+      - name: Set up Apache
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apache2
+          # Configure Apache as per your project requirements
+      - name: Create project directory
+        run: sudo mkdir -p /home/dell/thoughtwin_product/internship
+      - name: Copy project files to Apache document root
+        run: |
+          sudo cp -r * /home/dell/thoughtwin_product/internship  # Replace with the appropriate path to your project files
+      - name: Restart Apache
+        run: sudo systemctl restart apache2
+      - name: Configure Apache Server
+        run: |
+          sudo rm /etc/apache2/sites-available/000-default.conf
+          sudo cp /home/dell/thoughtwin_product/internship/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
+          sudo cat /etc/apache2/sites-available/thoughtwin-internship-pro.conf
+          sudo service apache2 reload 
+          sudo a2ensite thoughtwin-internship-pro.conf
+  
+  
