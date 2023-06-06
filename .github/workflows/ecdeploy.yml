@@ -45,7 +45,7 @@ jobs:
         run: sudo systemctl restart apache2
 
 
-      - name: Configure Apache Server
+      - name: Configure Apache Server 
         run: |
             sudo rm /etc/apache2/sites-available/000-default.conf
             sudo cp /home/aditya/internship-pipeline/internship_product/apache/thoughtwin-internship-pro.conf /etc/apache2/sites-available/
